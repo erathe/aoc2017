@@ -25,7 +25,3 @@ const generateList = (inputArray, inpLengths) => {
 
 const resList = generateList(inputArray, inplengths);
 console.log(resList[0] * resList[1]);
-
-// input[i] = 0
-// while (max-- > 0)
-//     input[++i % input.length]++
