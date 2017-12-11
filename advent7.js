@@ -3,17 +3,14 @@ const input = fs.readFileSync('./input7').toString().trim().split('\n');
 
 let [nodes, holding, root] = [{}, {}, ''];
 
-const dfs = (rooter, holding, nodes) => {
-    let [exp, weight] = [0, nodes[rooter]];
-    for (child of holding[rooter]){
-        //Holy scoping rules
-        const ch = child;
+const dfs = (root, holding, nodes) => {
+    let [exp, weight] = [0, nodes[root]];
+    for (let ch of holding[root]){
         let w = dfs(ch, holding, nodes);
         weight += w;
         if(exp === 0) exp = w;
         else if(exp != w){
-            const bad = nodes[ch];
-            console.log('expcted child', ch, 'to have weight', nodes[ch] += (exp-w), 'has weight', bad);
+            console.log('expcted child', ch, 'to have weight', nodes[ch] + (exp-w), 'has weight', nodes[ch]);
         }
     }
     return weight;
