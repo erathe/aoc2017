@@ -2,7 +2,7 @@ const fs = require('fs');
 console.time("run");
 const input = fs.readFileSync('./input11').toString('utf-8').trim().split(',');
 
-let[x, y] = [0,0,0];
+let[x, y] = [0,0];
 let max = 0;
 for (dir of input){
     if(dir === 'ne') x+=1;
