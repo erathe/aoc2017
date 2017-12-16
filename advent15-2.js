@@ -5,8 +5,6 @@ console.time("run");
 let [i, pairs] = [0, 0];
 const [divOp, genA, genB] = [2147483647, 16807, 48271];
 
-const convertToBinary = num => num.toString(2);
-const matchPairs = (valA, valB) => valA.slice(-16) === valB.slice(-16);
 const getVal = (num, generator, multiple) => {
   let val = (num * generator) % divOp;
   while(val % multiple != 0){
@@ -27,7 +25,7 @@ function* genPairs(){
 const gen = genPairs();
 while(i < 5000000){
   const [valA, valB] = gen.next().value;
-  if (matchPairs(convertToBinary(valA), convertToBinary(valB))) pairs++;
+  if ((valA & 0xFFFF) == (valB & 0xFFFF)) pairs++;
   i++;
 }
 

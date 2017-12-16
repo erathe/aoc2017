@@ -19,7 +19,7 @@ function* genPairs(){
 const gen = genPairs();
 while(i < 40000000){
   const [valA, valB] = gen.next().value;
-  if (matchPairs(convertToBinary(valA), convertToBinary(valB))) pairs++;
+  if ((valA & 0xFFFF) == (valB & 0xFFFF)) pairs++;
   i++;
 }
 
